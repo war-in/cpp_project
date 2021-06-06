@@ -4,35 +4,47 @@
 #include <Windows.h>
 #include <string.h>
 
+#include <fstream>
+
 #include "parser.h"
-#include "gui.h"
 
 using namespace std;
 
 
-int main()
+int main(int argc, char* argv[])
 {
-	Parser parser("https://sylabusy.agh.edu.pl/pl/1/1/15/1/4/12/13");
+	if (argc < 3)
+		return -1;
 
-	parser.parse("Semestr zimowy, 2020/2021");
+	ofstream myfile;
+	myfile.open("example.txt");
 
-	cout << "sciezkowe" << endl;
+	Parser parser(argv[1]);
+
+	parser.parse((string) argv[2]);
+
+	myfile << "Sciezkowe" << endl;
 
 	vector <string> pathSubjects = parser.getPathSubjects();
+	vector <string> pathSubjectsInfo = parser.getPathSubjectsInfo();
 	for (size_t i = 0; i < pathSubjects.size(); i++)
-		cout << pathSubjects[i] << endl;
+		myfile << pathSubjects[i] << pathSubjectsInfo[i] << endl;
 
-	cout << endl;
-	cout << "Obieraki" << endl;
+	myfile << "Obieraki" << endl;
 
-	vector <string> electiveSubjects = parser.getElectiveSubjects();
-	for (size_t i = 0; i < electiveSubjects.size(); i++)
-		cout << electiveSubjects[i] << endl;
+	vector <string> faculties = parser.getFaculties();
+	vector <string> facultiesInfo = parser.getFacultiesInfo();
+	for (size_t i = 0; i < faculties.size(); i++)
+		myfile << faculties[i] << facultiesInfo[i] << endl;
 
-	cout << endl;
-	cout << "Przedmioty" << endl;
+	myfile << "Przedmioty" << endl;
 
 	vector <string> subjects = parser.getSubjects();
+	vector <string> subjectsInfo = parser.getSubjectsInfo();
 	for (size_t i = 0; i < subjects.size(); i++)
-		cout << subjects[i] << endl;
+		myfile << subjects[i] << subjectsInfo[i] << endl;
+
+	myfile.close();
+
+	return 0;
 }

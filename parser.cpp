@@ -59,7 +59,45 @@ void Parser::parse(std::string semester) {
                     break;
 
                 if (html.substr(j, pattern.length()).compare(pattern) == 0) {
-                    pathSubjects.push_back(strip(html.substr(j + pattern.length() + 195, 45)));
+                    pathSubjects.push_back(strip(html.substr(j + pattern.length() + 195, 60)));
+
+                    string hours = "";
+                    string lecture = "Wyk";
+                    string lab = "boratoryjne: ";
+                    string ex = "dytoryjne: ";
+
+                    for (int m = j; m < j + 700; m++) {
+
+                        if (html.substr(m, lecture.length()).compare(lecture) == 0) {
+                            hours.append(";");
+                            hours += html.substr(m+9, 2);
+                        }
+
+                        if (html.substr(m, lab.length()).compare(lab) == 0) {
+                            hours.append(";");
+
+                            if (hours.length() == 4)
+                                hours.append("0;");
+
+                            hours += html.substr(m + lab.length(), 2);
+                        }
+
+                        if (html.substr(m, ex.length()).compare(ex) == 0) {
+                            hours.append(";");
+                            hours += html.substr(m + ex.length(), 2);
+                        }
+                    }
+
+                    if (hours.length() == 0)
+                        hours.append(";0;0;0");
+
+                    else if (hours.length() == 3)
+                        hours.append(";0;0");
+
+                    else if(hours.length() == 6)
+                        hours.append(";0");
+
+                    pathSubjectsInfo.push_back(hours);
                 }
             }
             break;
@@ -72,7 +110,7 @@ void Parser::parse(std::string semester) {
 
         if (html.substr(i, semester.length()).compare(semester) == 0) {
 
-            for (int k = i; k < html.length() - tmp.length(); k++) {
+            for (int k = i+1; k < html.length() - tmp.length(); k++) {
 
                 if (html.substr(k, 7).compare("Semestr") == 0)
                     break;
@@ -87,7 +125,48 @@ void Parser::parse(std::string semester) {
                             break;
 
                         if (html.substr(j, pattern.length()).compare(pattern) == 0) {
-                            electiveSubjects.push_back(strip(html.substr(j + pattern.length() + 195, 50)));
+                            string subject = strip(html.substr(j + pattern.length() + 195, 50));
+                            if (subject.length() > 45 || subject.compare("<span class=\"pull-right\"><i class=\"") == 0)
+                                continue;
+                            faculties.push_back(subject);
+
+                            string hours = "";
+                            string lecture = "Wyk";
+                            string lab = "boratoryjne: ";
+                            string ex = "dytoryjne: ";
+
+                            for (int m = j; m < j + 700; m++) {
+
+                                if (html.substr(m, lecture.length()).compare(lecture) == 0) {
+                                    hours.append(";");
+                                    hours += html.substr(m + 9, 2);
+                                }
+
+                                if (html.substr(m, lab.length()).compare(lab) == 0) {
+                                    hours.append(";");
+
+                                    if (hours.length() == 4)
+                                        hours.append("0;");
+
+                                    hours += html.substr(m + lab.length(), 2);
+                                }
+
+                                if (html.substr(m, ex.length()).compare(ex) == 0) {
+                                    hours.append(";");
+                                    hours += html.substr(m + ex.length(), 2);
+                                }
+                            }
+
+                            if (hours.length() == 0)
+                                hours.append(";0;0;0");
+
+                            else if (hours.length() == 3)
+                                hours.append(";0;0");
+
+                            else if (hours.length() == 6)
+                                hours.append(";0");
+
+                            facultiesInfo.push_back(hours);
                         }
                     }
                     break;
@@ -96,7 +175,6 @@ void Parser::parse(std::string semester) {
             break;
         }
     }
-
 
     tmp = "<td scope=\"row\" style=\"max-width: 180px; padding-left: 10px;\">";
 
@@ -115,7 +193,45 @@ void Parser::parse(std::string semester) {
                             break;
 
                         if (html.substr(j, tmp.length()).compare(tmp) == 0 && html.substr(j + tmp.length() + 37, pattern.length()).compare(pattern) == 0) {
-                            subjects.push_back(strip(html.substr(j + pattern.length() + 195, 60)));
+                            subjects.push_back(strip(html.substr(j + pattern.length() + 195, 70)));
+
+                            string hours = "";
+                            string lecture = "Wyk";
+                            string lab = "boratoryjne: ";
+                            string ex = "dytoryjne: ";
+
+                            for (int m = j; m < j + 700; m++) {
+
+                                if (html.substr(m, lecture.length()).compare(lecture) == 0) {
+                                    hours.append(";");
+                                    hours += html.substr(m + 9, 2);
+                                }
+
+                                if (html.substr(m, lab.length()).compare(lab) == 0) {
+                                    hours.append(";");
+
+                                    if (hours.length() == 4)
+                                        hours.append("0;");
+
+                                    hours += html.substr(m + lab.length(), 2);
+                                }
+
+                                if (html.substr(m, ex.length()).compare(ex) == 0) {
+                                    hours.append(";");
+                                    hours += html.substr(m + ex.length(), 2);
+                                }
+                            }
+
+                            if (hours.length() == 0)
+                                hours.append(";0;0;0");
+
+                            else if (hours.length() == 3)
+                                hours.append(";0;0");
+
+                            else if (hours.length() == 6)
+                                hours.append(";0");
+
+                            subjectsInfo.push_back(hours);
                         }
                     }
                     break;
