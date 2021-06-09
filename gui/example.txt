@@ -1,0 +1,9 @@
+Sciezkowe
+Obieraki
+Przedmioty
+Analiza matematyczna 1;42;42;0
+Matematyka dyskretna;28;28;0
+Wprowadzenie do systemu UNIX;30;0;14
+Kompetencje interpersonalne;22;6<;0
+Algebra;42;42;0
+Wstęp do informatyki;30;30;0

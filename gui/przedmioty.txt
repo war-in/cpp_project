@@ -1,0 +1,7 @@
+ Wprowadzenie do systemu UNIX;13;13;0
+ Wstęp do informatyki;13;13;0
+ Wychowanie fizyczne 1;13;13;0
+ Kompetencje interpersonalne;13;13;0
+ Analiza matematyczna 1;13;13;0
+ Algebra;13;13;0
+ Matematyka dyskretna;13;13;0

@@ -1,0 +1,26 @@
+Sciezkowe
+Projektowanie obiektowe;13;13;0
+Bazy danych;13;13;0
+Elementy statystycznego uczenia maszynowego;13;13;0
+Algorytmy tekstowe;13;13;0
+Algorytmy inspirowane biologicznie;13;13;0
+Modelowanie systemów dyskretnych;13;13;0
+Multimedia i algorytmy przetwarzania multimediów;13;13;0
+Obieraki
+Programowanie w jezyku Fortran;13;13;0
+Programowanie w języku C++;13;13;0
+Programowanie w języku Asembler;13;13;0
+Programowanie w językach Erlang i Elixir;13;13;0
+Programowanie w języku Icon;13;13;0
+Programowanie w jezyku Julia;13;13;0
+Programowanie w języku Python;13;13;0
+Programowanie w języku Ruby;13;13;0
+Programowanie w języku Scala;13;13;0
+Programowanie w języku Prolog;13;13;0
+Programowanie w języku JavaScript;13;13;0
+Programowanie w języku Ada;13;13;0
+Przedmioty
+Teoria automatów i języków formalnych;13;13;0
+Metody obliczeniowe w nauce i technice;13;13;0
+Technika cyfrowa;13;13;0
+Systemy operacyjne;13;13;0
